@@ -1,5 +1,6 @@
 export const ScreenRef = {
     Splash: 'Splash',
     AuthStack: 'AuthStack',
-    Login: 'Login'
+    Login: 'Login',
+    Signup: 'Signup'
 };
