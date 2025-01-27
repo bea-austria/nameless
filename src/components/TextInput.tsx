@@ -3,11 +3,13 @@ import { getIn, useFormikContext } from "formik";
 
 type Props = {
     name: string;
-    isSecured?: boolean
+    isSecured?: boolean;
+    placeHolder: string;
+    label: string;
 }
 
-const TextInput: React.FC<Props> = ({name, isSecured}: Props) => {
-    const  { values, errors, touched, setFieldValue } = useFormikContext();
+const TextInput: React.FC<Props> = ({ name, isSecured, placeHolder, label }: Props) => {
+    const { values, errors, touched, setFieldValue } = useFormikContext();
 
     const value = getIn(values, name);
     const error = getIn(errors, name);
@@ -19,15 +21,15 @@ const TextInput: React.FC<Props> = ({name, isSecured}: Props) => {
 
     return (
         <View className="w-full">
+            <Text>{label}</Text>
             <RNTextInput
-            value={value}
-            onChangeText={handleChange}
-            secureTextEntry={isSecured}
-            className="text-[14px] font-poppins font-semibold border-b border-black p-3 "
+                value={value}
+                onChangeText={handleChange}
+                secureTextEntry={isSecured}
+                placeholder={placeHolder}
+                className="text-[14px] font-poppins border-stone-400 border-[1px] rounded-lg p-3"
             />
-            {error && isTouched && 
-                <Text className="text-red-600">{error}</Text>
-            }
+            <Text className="text-red-600">{(isTouched && error) ? error : ''}</Text>
         </View>
     )
 }
