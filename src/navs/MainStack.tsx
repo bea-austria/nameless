@@ -5,6 +5,7 @@ import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/
 import { ScreenRef } from '../helper/ScreenRef';
 import Splash from '../screens/Splash';
 import { View } from 'react-native';
+import AuthStack from './AuthStack';
 
 const Stack = createStackNavigator();
 
@@ -18,7 +19,7 @@ const MainStack = () => {
       >
         <View className="flex-1">
           <Stack.Navigator
-          initialRouteName={ScreenRef.Splash}
+          initialRouteName={ScreenRef.AuthStack}
           screenOptions={{
             headerShown: false,
             gestureEnabled: false,
@@ -27,6 +28,7 @@ const MainStack = () => {
           }}
           >
             <Stack.Screen name={ScreenRef.Splash} component={Splash}/>
+            <Stack.Screen name={ScreenRef.AuthStack} component={AuthStack}/>
           </Stack.Navigator>
         </View>
       </NavigationContainer>
